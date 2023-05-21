@@ -1,28 +1,25 @@
-import { Component, OnInit } from "@angular/core";
-import { ICurrency } from "src/app/currency";
-import { CurrencyDataService } from "src/app/services/сurrencyData.service";
+import { Component, OnInit } from '@angular/core';
+import { ICurrency } from 'src/app/currency';
+import { CurrencyDataService } from 'src/app/services/сurrencyData.service';
 
 @Component({
   selector: 'app-header',
-  templateUrl: './header.component.html'
+  templateUrl: './header.component.html',
 })
-
 export class HeaderComponent implements OnInit {
-  title = 'current exchange rate'
+  title = 'current exchange rate';
 
-  currencies: ICurrency[] = []
+  currencies: ICurrency[] = [];
 
-  constructor(private currencyDataService: CurrencyDataService){}
+  constructor(private currencyDataService: CurrencyDataService) {}
 
   ngOnInit(): void {
-    this.currencyDataService.getCurrencyData().subscribe(currencies => {
-      currencies.forEach(currency => {
-        if(currency.cc == 'USD' || currency.cc == 'EUR'){
-          this.currencies.push(currency)
+    this.currencyDataService.getCurrencyData().subscribe((currencies) => {
+      currencies.forEach((currency) => {
+        if (currency.cc == 'USD' || currency.cc == 'EUR') {
+          this.currencies.push(currency);
         }
-      })
-      console.log(this.currencies);
-      console.log(currencies)
-    })
+      });
+    });
   }
 }

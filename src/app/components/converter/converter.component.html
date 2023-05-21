@@ -1,0 +1,57 @@
+<div>
+  <form class="row g-3 m-5" (submit)="convert()">
+    <div class="col-auto">
+      <select
+        #c1
+        class="form-select mb-3"
+        aria-label="Default select example"
+        (mouseleave)="setCountryOne(c1.value)"
+      >
+        <option id="UAH" value="UAH" selected>UAH</option>
+        <option
+          *ngFor="let item of currencies"
+          id="{{ item.cc }}"
+          value="{{ item.cc }}"
+        >
+          {{ item.cc }}
+        </option>
+      </select>
+      <input
+        #a
+        type="text"
+        value="{{ this.amount }}"
+        class="form-control"
+        id="inputAmount"
+        placeholder="Input amount"
+        (change)="setAmount(a.value)"
+      />
+    </div>
+    <div class="col-auto">
+      <select
+        #c2
+        class="form-select mb-3"
+        aria-label="Default select example"
+        (mouseleave)="setCoutryTwo(c2.value)"
+      >
+        <option value="UAH" selected>UAH</option>
+        <option
+          *ngFor="let item of currencies"
+          id="{{ item.cc }}"
+          value="{{ item.cc }}"
+        >
+          {{ item.cc }}
+        </option>
+      </select>
+      <input
+        type="text"
+        class="form-control"
+        id="result"
+        placeholder="result"
+        value="{{ this.resault }}"
+      />
+    </div>
+  </form>
+  <button (click)="convert()" class="btn btn-secondary me-md-2" type="submit">
+    Convert
+  </button>
+</div>
